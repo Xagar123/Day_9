@@ -9,22 +9,19 @@ days=0
 total_working_hrs=0
 
 
-		attendance=$((RANDOM%3))
+		attendance=$((RANDOM%2))
 
-		case $attendance in
-			0)
-				echo "Employee is absent"
-				echo "Daily wage is 0"
-				;;
-			1)
-				echo "Employee is present"
-				dailyWage=$(($WAGE_PER_HOUR * $HALF_DAY_WORKING_HRS))
-				echo "Daily wage for part time: $dailyWage"
-				;;
-			2)
-				echo "EMployee is present"
-				dailyWage=$(($WAGE_PER_HOUR * $FULL_DAY_WORKING_HRS))
-				echo "Daily wage for full time: $dailyWage"
-				;;
-		esac
-	
+		if [ $attendance -eq 0 ]
+                then
+                	echo "Employee is Absent"
+	                echo "Daily wage is 0"
+
+               elif [ $attendance -eq 1 ]
+               then
+                	echo "Employee is Present"
+
+	                dailyWage=$(($WAGE_PER_HOUR * $HALF_DAY_WORKING_HRS))
+
+	                echo "Daily wage for part time: $dailyWage"
+
+		fi
